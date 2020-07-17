@@ -1,3 +1,29 @@
+# Buffering new Tweets with SWR
+
+[Watch the video on YouTube](https://youtu.be/b1uZ4FYHaM8).
+
+Here's the `useBufferedDataHook` hook that we wrote:
+
+```js
+function useBufferedData(url) {
+  let { error, data } = useSWR(url, fetcher);
+  let [buffer, setBuffer] = useState(data);
+
+  if (data && !buffer) setBuffer(data);
+
+  return {
+    data: buffer,
+    error,
+    stale: buffer !== data,
+    update: () => setBuffer(data),
+  };
+}
+```
+
+You can [see this project in action on CodeSandbox](https://codesandbox.io/s/github/samselikoff/2020-07-16-show-new-tweets?file=/pages/index.js), or pull it down and run it locally.
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
