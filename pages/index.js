@@ -39,13 +39,31 @@ function Home() {
         {!data || toggle ? (
           <>
             <div className="px-4 py-2">
-              <SkeletonTweet type="long" />
+              <div className="animate-pulse">
+                <SkeletonTweet type="long" />
+              </div>
             </div>
             <div className="px-4 py-2">
-              <SkeletonTweet type="short" />
+              <div
+                className="animate-pulse"
+                style={{
+                  animationFillMode: "backwards",
+                  animationDelay: "150ms",
+                }}
+              >
+                <SkeletonTweet type="short" />
+              </div>
             </div>
             <div className="px-4 py-2">
-              <SkeletonTweet type="long" />
+              <div
+                className="animate-pulse"
+                style={{
+                  animationFillMode: "backwards",
+                  animationDelay: "300ms",
+                }}
+              >
+                <SkeletonTweet type="long" />
+              </div>
             </div>
           </>
         ) : (
